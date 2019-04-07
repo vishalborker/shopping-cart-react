@@ -1,0 +1,15 @@
+.Cart {
+    width: 250px;
+    position: absolute;
+    right: 0;
+    top: 60px;
+    background: black;
+    color: white;
+    height: 500px;
+}
+
+li {
+    text-decoration: none;
+}
+
+.hidden { display:none; }
