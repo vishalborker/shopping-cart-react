@@ -5,7 +5,7 @@ import Filters from './../Filters/Filters';
 import Main from './../Main/Main';
 import Footer from './../Footer/Footer';
 import './Home.css'
-let container;
+// let container;
 class Home extends Component {
     state = {
         cartItems: [],

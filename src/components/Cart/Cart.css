@@ -6,6 +6,7 @@
     background: black;
     color: white;
     height: 500px;
+    overflow: scroll;
 }
 
 li {

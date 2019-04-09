@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './Cart.css'
+import { connect } from "react-redux";
 
 class Cart extends Component {
     props = {
         shouldHide: true
-    }
-    state = {
-        cartItems: []
     }
 
     componentWillReceiveProps(nextProps) {
@@ -29,7 +27,7 @@ class Cart extends Component {
     render() {
         return (
             <div className={this.props.shouldHide ? 'hidden' : 'Cart'}>
-                { this.state.cartItems.map((item, i) => { 
+                { this.props.cartItems.map((item, i) => { 
                     return (
                      <li key={i}>
                         <span><img height="70" width="50"src={item.image} alt=""/></span>
@@ -45,4 +43,8 @@ class Cart extends Component {
         );
     }
 }
-export default Cart;
+const mapStateToProps = state => ({
+    cartItems: state.cartItems,
+});
+  
+export default connect(mapStateToProps)(Cart);
