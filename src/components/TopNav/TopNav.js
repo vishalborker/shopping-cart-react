@@ -1,35 +1,32 @@
 import React, { Component } from 'react';
 import './TopNav.css';
+import { connect } from 'react-redux';
 
 class TopNav extends Component {
-    props = {
-        itemsAdded: 0
+    // eslint-disable-next-line no-useless-constructor
+    constructor(props) {
+      super(props);
     }
-    state = {
-        itemsCount: 0
-    }
+
     showCart() {
-        this.props.toggleCartDisplay();
+      this.props.toggleCartDisplay();
     }
 
     componentDidMount() {
-        this.showCart()
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.itemsAdded) {
-            this.setState({itemsCount: nextProps.itemsAdded})
-        }
+      this.showCart();
     }
     
     render() {
-        return (
-            <div className="TopNav">
-              <span>Welcome to shopping site</span>
-              <span className="cart-icon" onClick={this.showCart.bind(this)}>Cart ({this.state.itemsCount})</span>
-            </div>
-        );
+      return (
+        <div className="TopNav">
+          <span>Welcome to shopping site</span>
+          <span className="cart-icon" onClick={this.showCart.bind(this)}>Cart ({this.props.cartLength})</span>
+        </div>
+      );
     }
 }
+const mapStateToProps = state => ({
+  cartLength: state.cartItems.length
+});
 
-export default TopNav;
+export default connect(mapStateToProps, null)(TopNav);
